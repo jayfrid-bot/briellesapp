@@ -4,42 +4,77 @@
 
 /* "body" means the WHOLE page. */
 body {
-  height: 100vh;                 /* make the page as tall as the whole screen (vh = "viewport height") */
-  margin: 0;                     /* remove the little gap browsers add around the edge */
-
-  display: flex;                 /* "flex" is a magic way to line things up */
-  flex-direction: column;        /* stack things top-to-bottom instead of side-by-side */
-  align-items: center;           /* center everything LEFT-to-RIGHT */
-  justify-content: center;       /* center everything TOP-to-BOTTOM */
-
+  margin: 0;                       /* remove the little gap around the edge */
   font-family: Arial, sans-serif;  /* a clean, friendly font */
-  background: #eaf6ff;             /* a soft light-blue background (colors use # codes) */
+  background: #eaf6ff;             /* a soft light-blue background */
+}
+
+/* A "screen" is one full page of the app (like a Scratch backdrop). */
+.screen {
+  min-height: 100vh;          /* as tall as the whole screen (vh = viewport height) */
+  display: flex;              /* "flex" lines things up neatly */
+  flex-direction: column;     /* stack things top-to-bottom */
+  align-items: center;        /* center LEFT-to-RIGHT */
+  justify-content: center;    /* center TOP-to-BOTTOM */
+}
+
+/* Anything with class "hidden" disappears. This is our show/hide magic! */
+.hidden {
+  display: none;
 }
 
 /* "h1" is our big heading. */
 h1 {
-  text-align: center;            /* center the words */
-  color: #1b4965;                /* a nice dark blue for the text */
-  font-size: 48px;               /* BIG title words */
-  margin-bottom: 15px;           /* small gap so the button sits right below */
+  text-align: center;
+  color: #1b4965;             /* dark blue */
+  font-size: 48px;            /* BIG title words */
+  margin-bottom: 15px;
 }
 
-/* This is OUR OWN name. The dot means "anything with class='enter-button'". */
+/* The Enter button (a rounded rectangle). */
 .enter-button {
-  width: 160px;                  /* wider than tall = a RECTANGLE */
-  height: 55px;                  /* shorter height makes it a rectangle */
-  border-radius: 14px;           /* ROUNDED CORNERS (bigger number = rounder) */
+  width: 160px;
+  height: 55px;
+  border-radius: 14px;        /* rounded corners */
+  font-size: 18px;
+  color: white;
+  background: #2a9d8f;        /* teal/green */
+  border: none;
+  cursor: pointer;            /* show the clicky hand pointer */
+}
+.enter-button:hover { background: #21867a; }   /* darker when you hover */
 
-  font-size: 18px;               /* size of the word "Enter" */
-  color: white;                  /* white text */
-  background: #2a9d8f;           /* a teal/green color */
-  border: none;                  /* no boring default border */
-  cursor: pointer;               /* show a "you can click me!" hand pointer */
-
-  margin-top: 20px;              /* a little space above the button */
+/* The 6 animal buttons sit in a grid (rows and columns). */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 2 columns side by side */
+  gap: 15px;                        /* space between the buttons */
 }
 
-/* This runs ONLY when you hover your mouse over the button. */
-.enter-button:hover {
-  background: #21867a;           /* go a little darker so it feels clickable */
+/* Each animal-group button. */
+.category-button {
+  width: 200px;
+  height: 80px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: none;
+  color: white;
+  background: #457b9d;        /* blue */
+  cursor: pointer;
 }
+.category-button:hover { background: #35617c; }
+
+/* The Home button stays pinned in the top-left corner of every screen. */
+.home-button {
+  position: fixed;            /* "fixed" = stays put even if the page scrolls */
+  top: 12px;
+  left: 12px;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: #e76f51;        /* orange */
+  cursor: pointer;
+}
+.home-button:hover { background: #d85a3c; }

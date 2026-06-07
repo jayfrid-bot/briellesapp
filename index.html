@@ -2,20 +2,48 @@
 <!-- Anything between < and > is called a "tag". Tags are like LEGO bricks. -->
 <!-- These grey notes (like this line) are called COMMENTS. The computer ignores them. -->
 
-<!DOCTYPE html>            <!-- This line just means "Hey browser, this is a web page!" -->
-<html>                     <!-- Everything on the page goes inside <html> ... </html> -->
+<!DOCTYPE html>
+<html>
 
-  <head>                   <!-- The "head" holds SETUP info you don't see on the page -->
-    <title>Biology Study App</title>          <!-- The words shown on the browser TAB -->
-    <link rel="stylesheet" href="style.css">  <!-- This connects our PRETTY file (style.css) -->
+  <head>
+    <title>Biology Study App</title>
+    <link rel="stylesheet" href="style.css">   <!-- connects the PRETTY file -->
   </head>
 
-  <body>                   <!-- The "body" holds everything you DO see on the page -->
+  <body>
 
-    <h1>Biology Study App</h1>   <!-- h1 = our big centered heading -->
+    <!-- The Home button floats in the corner. It hides on the very first screen. -->
+    <button id="home-button" class="home-button hidden" onclick="showScreen('start-screen')">🏠 Home</button>
 
-    <!-- A button. class="enter-button" tells CSS to make it a rounded square. -->
-    <button class="enter-button">Enter</button>
+
+    <!-- ===== SCREEN 1: the START screen ===== -->
+    <!-- A "screen" is one page of the app (like a backdrop in Scratch). -->
+    <div id="start-screen" class="screen">
+      <h1>Biology Study App</h1>
+      <!-- When clicked, this runs showScreen() and jumps to the home screen. -->
+      <button class="enter-button" onclick="showScreen('home-screen')">Enter</button>
+    </div>
+
+
+    <!-- ===== SCREEN 2: the HOME screen (6 animal groups) ===== -->
+    <!-- class="screen hidden" means it starts HIDDEN until we click Enter. -->
+    <div id="home-screen" class="screen hidden">
+      <h1>Pick an Animal Group</h1>
+
+      <!-- These 6 buttons sit in a grid (rows and columns). -->
+      <div class="button-grid">
+        <button class="category-button">🐱 Felines</button>
+        <button class="category-button">🐶 Canines</button>
+        <button class="category-button">🐸 Amphibians</button>
+        <button class="category-button">🦎 Reptiles</button>
+        <button class="category-button">🐦 Birds</button>
+        <button class="category-button">🐹 Small Pets</button>
+      </div>
+    </div>
+
+
+    <!-- Load our JavaScript LAST (the BRAIN that makes buttons work). -->
+    <script src="app.js"></script>
 
   </body>
 </html>
