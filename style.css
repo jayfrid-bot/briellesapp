@@ -1,0 +1,44 @@
+/* style.css — this file makes your website PRETTY. */
+/* In CSS, you pick a thing (like "body") and then list rules inside { } */
+/* Anything between /* and */ is a COMMENT (a note the computer ignores). */
+
+/* "body" means the WHOLE page. */
+body {
+  height: 100vh;                 /* make the page as tall as the whole screen (vh = "viewport height") */
+  margin: 0;                     /* remove the little gap browsers add around the edge */
+
+  display: flex;                 /* "flex" is a magic way to line things up */
+  flex-direction: column;        /* stack things top-to-bottom instead of side-by-side */
+  align-items: center;           /* center everything LEFT-to-RIGHT */
+  justify-content: center;       /* center everything TOP-to-BOTTOM */
+
+  font-family: Arial, sans-serif;  /* a clean, friendly font */
+  background: #eaf6ff;             /* a soft light-blue background (colors use # codes) */
+}
+
+/* "h1" is our big heading. */
+h1 {
+  text-align: center;            /* center the words */
+  color: #1b4965;                /* a nice dark blue for the text */
+  font-size: 48px;               /* BIG title words */
+}
+
+/* This is OUR OWN name. The dot means "anything with class='enter-button'". */
+.enter-button {
+  width: 90px;                   /* how wide the square is (smaller now) */
+  height: 90px;                  /* how tall the square is (same = a square!) */
+  border-radius: 18px;           /* ROUNDED CORNERS (bigger number = rounder) */
+
+  font-size: 18px;               /* size of the word "Enter" */
+  color: white;                  /* white text */
+  background: #2a9d8f;           /* a teal/green color */
+  border: none;                  /* no boring default border */
+  cursor: pointer;               /* show a "you can click me!" hand pointer */
+
+  margin-top: 20px;              /* a little space above the button */
+}
+
+/* This runs ONLY when you hover your mouse over the button. */
+.enter-button:hover {
+  background: #21867a;           /* go a little darker so it feels clickable */
+}
