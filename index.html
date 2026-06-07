@@ -20,6 +20,16 @@
     <!-- A "screen" is one page of the app (like a backdrop in Scratch). -->
     <div id="start-screen" class="screen">
       <h1>Biology Study App</h1>
+
+      <!-- The age picker. A <select> is a DROPDOWN box. -->
+      <!-- The options (4 to 60) are added by JavaScript, not typed by hand. -->
+      <!-- onchange runs setAge() whenever you pick a new age. -->
+      <div class="age-box">
+        <label for="age-picker">How old are you?</label><br>
+        <select id="age-picker" onchange="setAge()"></select>
+        <p id="age-message"></p>
+      </div>
+
       <!-- When clicked, this runs showScreen() and jumps to the home screen. -->
       <button class="enter-button" onclick="showScreen('home-screen')">Enter</button>
     </div>

@@ -1,6 +1,61 @@
 // app.js — this is the BRAIN of your app. It makes buttons DO things.
 // In JavaScript, "//" starts a comment (a note the computer ignores).
 
+// These two boxes remember the age you picked and your learning mode.
+// "let" makes a box whose value can CHANGE later (unlike "const").
+let currentAge = 10;        // a starting age until you pick one
+let currentLevel = "";      // your learning mode (set by setAge below)
+
+
+// buildAgePicker fills the dropdown with the choices 4, 5, 6 ... 60.
+// We use a LOOP so we don't have to type 57 choices by hand!
+function buildAgePicker() {
+  const picker = document.getElementById("age-picker");
+
+  // A "for" loop counts: start at 4, keep going while age <= 60, add 1 each time.
+  for (let age = 4; age <= 60; age = age + 1) {
+    const option = document.createElement("option");   // make one choice
+    option.value = age;                                // its hidden value
+    option.textContent = age + " years old";           // the words you see
+    picker.appendChild(option);                        // add it to the dropdown
+  }
+
+  // If you picked an age before, the browser remembered it — use it again.
+  const savedAge = localStorage.getItem("age");
+  if (savedAge) {
+    picker.value = savedAge;
+  } else {
+    picker.value = 10;       // a friendly default the first time
+  }
+
+  setAge();   // show the right mode message right away
+}
+
+
+// setAge runs whenever you pick an age. It saves it and picks your MODE.
+function setAge() {
+  const picker = document.getElementById("age-picker");
+  currentAge = Number(picker.value);          // Number() turns text into a real number
+  localStorage.setItem("age", currentAge);    // remember it for next time
+
+  // Turn the age into a learning MODE using if / else.
+  let emoji, name, note;
+  if (currentAge <= 7) {
+    emoji = "🌱"; name = "Little Explorer"; note = "I'll use super simple words and fun facts!";
+  } else if (currentAge <= 11) {
+    emoji = "🔬"; name = "Junior Scientist"; note = "I'll keep things simple and clear.";
+  } else if (currentAge <= 15) {
+    emoji = "🕵️"; name = "Bone Detective"; note = "I'll give you normal, detailed info.";
+  } else {
+    emoji = "🎓"; name = "Anatomy Expert"; note = "I'll use full grown-up detail and tougher quizzes.";
+  }
+  currentLevel = name;
+
+  // Show the mode under the dropdown.
+  document.getElementById("age-message").textContent =
+    "Mode: " + emoji + " " + name + " — " + note;
+}
+
 // This is a FUNCTION. A function is a set of steps with a name,
 // so you can run all the steps just by saying its name.
 // This one is called showScreen. You give it the name of a screen to show.
@@ -68,3 +123,7 @@ function openCategory(categoryId) {
   // 5) Finally, switch to the animals screen.
   showScreen("category-screen");
 }
+
+
+// ===== This runs ONCE when the page first opens =====
+buildAgePicker();   // fill the age dropdown and show the starting mode
