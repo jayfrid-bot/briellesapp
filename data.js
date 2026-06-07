@@ -62,7 +62,7 @@ const DATA = {
           hard: "Caudal vertebrae — small tail bones that help with balance and communication." }
       ]
     },
-    { id: "lion",     category: "felines", name: "Lion",     emoji: "🦁" },
+    { id: "lion",     category: "felines", name: "Lion",     emoji: "🦁", photo: "images/animals/lion.jpg" },
     { id: "tiger",    category: "felines", name: "Tiger",    emoji: "🐯" },
     { id: "leopard",  category: "felines", name: "Leopard",  emoji: "🐆" },
     { id: "cheetah",  category: "felines", name: "Cheetah",  emoji: "🐆" },
