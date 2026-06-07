@@ -44,25 +44,54 @@ h1 {
 }
 .enter-button:hover { background: #21867a; }   /* darker when you hover */
 
-/* The 6 animal buttons sit in a grid (rows and columns). */
+/* The 6 animal cards sit in a grid (rows and columns). */
 .button-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;   /* 2 columns side by side */
-  gap: 15px;                        /* space between the buttons */
+  grid-template-columns: 1fr 1fr 1fr;   /* 3 columns side by side */
+  gap: 18px;                            /* space between the cards */
 }
 
-/* Each animal-group button. */
+/* Each animal-group card is a SQUARE. */
 .category-button {
-  width: 200px;
-  height: 80px;
-  font-size: 20px;
-  border-radius: 14px;
+  width: 150px;
+  height: 150px;             /* same width + height = a square */
+  border-radius: 18px;
   border: none;
-  color: white;
-  background: #457b9d;        /* blue */
   cursor: pointer;
+
+  /* a soft gradient background so it looks rounded and shiny (3D-ish) */
+  background: linear-gradient(160deg, #6fb1d6, #2a6f97);
+  color: white;
+
+  /* stack the picture on top and the name below, centered */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* a shadow under the card makes it look like it POPS off the page (3D!) */
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s, box-shadow 0.15s;   /* smooth movement */
 }
-.category-button:hover { background: #35617c; }
+
+/* When you hover, the card LIFTS up a little — feels 3D! */
+.category-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* The big animal on the card (right now it's an emoji; swap for a real photo later). */
+.cat-pic {
+  font-size: 64px;
+  line-height: 1;
+}
+
+/* The animal-group name under the picture. */
+.cat-name {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
 
 /* The Home button stays pinned in the top-left corner of every screen. */
 .home-button {
