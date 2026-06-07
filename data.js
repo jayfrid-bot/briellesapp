@@ -21,7 +21,9 @@ const DATA = {
   animals: [
 
     // ---- 10 FELINES (cats!) ----
-    { id: "cat",      category: "felines", name: "Cat",      emoji: "🐱" },
+    // The cat has a "photo" added, so it shows a picture instead of the emoji.
+    // To give any animal a photo: add  photo: "images/animals/NAME.jpg"
+    { id: "cat",      category: "felines", name: "Cat",      emoji: "🐱", photo: "images/animals/cat.svg" },
     { id: "lion",     category: "felines", name: "Lion",     emoji: "🦁" },
     { id: "tiger",    category: "felines", name: "Tiger",    emoji: "🐯" },
     { id: "leopard",  category: "felines", name: "Leopard",  emoji: "🐆" },

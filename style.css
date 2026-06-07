@@ -106,10 +106,18 @@ h1 {
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* The big animal on the card (right now it's an emoji; swap for a real photo later). */
+/* The big animal on the card when it's an EMOJI. */
 .cat-pic {
   font-size: 64px;
   line-height: 1;
+}
+
+/* The big animal on the card when it's a real PHOTO. */
+img.cat-pic {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;     /* crop the photo to fill the square neatly */
+  border-radius: 12px;   /* round the photo's corners */
 }
 
 /* The animal-group name under the picture. */

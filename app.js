@@ -39,21 +39,17 @@ function setAge() {
   localStorage.setItem("age", currentAge);    // remember it for next time
 
   // Turn the age into a learning MODE using if / else.
-  let emoji, name, note;
+  // (We keep this in currentLevel and use it later for easier/harder words.
+  //  We do NOT show it on screen — it just works quietly in the background.)
   if (currentAge <= 7) {
-    emoji = "🌱"; name = "Little Explorer"; note = "I'll use super simple words and fun facts!";
+    currentLevel = "Little Explorer";
   } else if (currentAge <= 11) {
-    emoji = "🔬"; name = "Junior Scientist"; note = "I'll keep things simple and clear.";
+    currentLevel = "Junior Scientist";
   } else if (currentAge <= 15) {
-    emoji = "🕵️"; name = "Bone Detective"; note = "I'll give you normal, detailed info.";
+    currentLevel = "Bone Detective";
   } else {
-    emoji = "🎓"; name = "Anatomy Expert"; note = "I'll use full grown-up detail and tougher quizzes.";
+    currentLevel = "Anatomy Expert";
   }
-  currentLevel = name;
-
-  // Show the mode under the dropdown.
-  document.getElementById("age-message").textContent =
-    "Mode: " + emoji + " " + name + " — " + note;
 }
 
 // This is a FUNCTION. A function is a set of steps with a name,
@@ -112,9 +108,16 @@ function openCategory(categoryId) {
     animalsHere.forEach(function (animal) {
       const button = document.createElement("button");      // make a new button
       button.className = "category-button";                 // give it the card look
-      button.innerHTML =
-        '<span class="cat-pic">' + animal.emoji + '</span>' +
-        '<span class="cat-name">' + animal.name + '</span>';
+
+      // Choose the picture: a real PHOTO if the animal has one, else the emoji.
+      let picture;
+      if (animal.photo) {
+        picture = '<img class="cat-pic" src="' + animal.photo + '" alt="' + animal.name + '">';
+      } else {
+        picture = '<span class="cat-pic">' + animal.emoji + '</span>';
+      }
+
+      button.innerHTML = picture + '<span class="cat-name">' + animal.name + '</span>';
       // (Next level: clicking this will open the animal's skeleton!)
       list.appendChild(button);                             // put it on the page
     });
