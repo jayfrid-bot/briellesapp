@@ -1,21 +1,46 @@
 /* style.css — this file makes your website PRETTY. */
-/* In CSS, you pick a thing (like "body") and then list rules inside { } */
+/* THEME: Jungle / Nature 🌿  (greens, leafy, animal-y) */
 /* These grey notes are COMMENTS — the computer ignores them. */
 
 /* "body" means the WHOLE page. */
 body {
-  margin: 0;                       /* remove the little gap around the edge */
-  font-family: Arial, sans-serif;  /* a clean, friendly font */
-  background: #eaf6ff;             /* a soft light-blue background */
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;  /* a friendly rounded font */
+  color: #f1faee;                                                /* soft cream text */
+
+  /* a jungle-green gradient sky, from deep green at top to leafy green */
+  background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 55%, #40916c 100%);
+  background-attachment: fixed;   /* keep the background still */
 }
+
+/* Floating decoration leaves in the corners (just for looks). */
+.leaves {
+  position: fixed;
+  inset: 0;                 /* cover the whole screen */
+  pointer-events: none;     /* you can click THROUGH them — they never block buttons */
+  z-index: 0;
+}
+.leaves span {
+  position: fixed;
+  font-size: 90px;
+  opacity: 0.18;            /* faint, so they don't get in the way */
+}
+.leaves span:nth-child(1) { top: 6%;  left: 4%;  transform: rotate(-20deg); }
+.leaves span:nth-child(2) { top: 10%; right: 5%; transform: rotate(25deg); }
+.leaves span:nth-child(3) { bottom: 6%; left: 7%; transform: rotate(15deg); }
+.leaves span:nth-child(4) { bottom: 8%; right: 6%; transform: rotate(-15deg); }
 
 /* A "screen" is one full page of the app (like a Scratch backdrop). */
 .screen {
-  min-height: 100vh;          /* as tall as the whole screen (vh = viewport height) */
-  display: flex;              /* "flex" lines things up neatly */
-  flex-direction: column;     /* stack things top-to-bottom */
-  align-items: center;        /* center LEFT-to-RIGHT */
-  justify-content: center;    /* center TOP-to-BOTTOM */
+  position: relative;
+  z-index: 1;                 /* sit ABOVE the leaves */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Anything with class "hidden" disappears. This is our show/hide magic! */
@@ -26,118 +51,126 @@ body {
 /* "h1" is our big heading. */
 h1 {
   text-align: center;
-  color: #1b4965;             /* dark blue */
-  font-size: 48px;            /* BIG title words */
-  margin-bottom: 15px;
+  color: #ffffff;
+  font-size: 46px;
+  margin: 0 0 22px 0;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);   /* soft shadow makes it pop */
+  letter-spacing: 1px;
 }
 
 /* The age picker box on the start screen. */
 .age-box {
   text-align: center;
-  margin-bottom: 22px;
-  color: #1b4965;
-  font-size: 18px;
+  margin-bottom: 26px;
+  font-size: 20px;
+  color: #f1faee;
 }
 
 /* The dropdown itself. */
 #age-picker {
   font-size: 16px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 2px solid #2a9d8f;
-  margin-top: 6px;
-  cursor: pointer;
-}
-
-/* The little "Mode:" message under the dropdown. */
-#age-message {
-  max-width: 320px;
-  margin: 10px auto 0 auto;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-/* The Enter button (a rounded rectangle). */
-.enter-button {
-  width: 160px;
-  height: 55px;
-  border-radius: 14px;        /* rounded corners */
-  font-size: 18px;
-  color: white;
-  background: #2a9d8f;        /* teal/green */
+  padding: 8px 14px;
+  border-radius: 12px;
   border: none;
-  cursor: pointer;            /* show the clicky hand pointer */
+  margin-top: 8px;
+  background: #f1faee;
+  color: #1b4332;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
-.enter-button:hover { background: #21867a; }   /* darker when you hover */
 
-/* The 6 animal cards sit in a grid (rows and columns). */
+/* The Enter button — a bright tropical "fruit" color so it stands out. */
+.enter-button {
+  width: 180px;
+  height: 60px;
+  border-radius: 30px;          /* very round = bubbly */
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b4332;               /* dark green text */
+  background: linear-gradient(160deg, #ffd166, #ffb703);   /* golden */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.enter-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.35);
+}
+
+/* The animal cards sit in a grid (rows and columns). */
 .button-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;   /* 3 columns side by side */
-  gap: 18px;                            /* space between the cards */
+  gap: 22px;
 }
 
 /* Each animal-group card is a SQUARE. */
 .category-button {
-  width: 150px;
-  height: 150px;             /* same width + height = a square */
-  border-radius: 18px;
-  border: none;
+  width: 160px;
+  height: 160px;
+  border-radius: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.35);   /* soft white edge */
   cursor: pointer;
 
-  /* a soft gradient background so it looks rounded and shiny (3D-ish) */
-  background: linear-gradient(160deg, #6fb1d6, #2a6f97);
-  color: white;
+  /* a leafy green gradient */
+  background: linear-gradient(160deg, #95d5b2, #52b788 55%, #2d6a4f);
+  color: #ffffff;
 
-  /* stack the picture on top and the name below, centered */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  /* a shadow under the card makes it look like it POPS off the page (3D!) */
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
-  transition: transform 0.15s, box-shadow 0.15s;   /* smooth movement */
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
-/* When you hover, the card LIFTS up a little — feels 3D! */
+/* When you hover, the card LIFTS up — feels 3D! */
 .category-button:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 26px rgba(0, 0, 0, 0.4);
 }
 
 /* The big animal on the card when it's an EMOJI. */
 .cat-pic {
-  font-size: 64px;
+  font-size: 70px;
   line-height: 1;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.3));
 }
 
 /* The big animal on the card when it's a real PHOTO. */
 img.cat-pic {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;     /* crop the photo to fill the square neatly */
-  border-radius: 12px;   /* round the photo's corners */
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 /* The animal-group name under the picture. */
 .cat-name {
-  margin-top: 8px;
-  font-size: 18px;
+  margin-top: 10px;
+  font-size: 19px;
   font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* The Home button stays pinned in the top-left corner of every screen. */
+/* The Home button — a wood-brown leaf-tag in the top-left corner. */
 .home-button {
-  position: fixed;            /* "fixed" = stays put even if the page scrolls */
-  top: 12px;
-  left: 12px;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 5;                  /* stay on top of everything */
   font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 10px;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 20px;
   border: none;
-  color: white;
-  background: #e76f51;        /* orange */
+  color: #ffffff;
+  background: linear-gradient(160deg, #b08968, #7f5539);   /* wood brown */
   cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s;
 }
-.home-button:hover { background: #d85a3c; }
+.home-button:hover { transform: translateY(-3px); }

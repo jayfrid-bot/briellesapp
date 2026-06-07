@@ -12,6 +12,11 @@
 
   <body>
 
+    <!-- Faint decoration leaves in the corners (just for the jungle look). -->
+    <div class="leaves">
+      <span>🌿</span><span>🍃</span><span>🌴</span><span>🌿</span>
+    </div>
+
     <!-- The Home button floats in the corner. It hides on the very first screen. -->
     <button id="home-button" class="home-button hidden" onclick="showScreen('start-screen')">🏠 Home</button>
 
@@ -19,7 +24,7 @@
     <!-- ===== SCREEN 1: the START screen ===== -->
     <!-- A "screen" is one page of the app (like a backdrop in Scratch). -->
     <div id="start-screen" class="screen">
-      <h1>Biology Study App</h1>
+      <h1>🌿 Biology Study App 🌿</h1>
 
       <!-- The age picker. A <select> is a DROPDOWN box. -->
       <!-- The options (4 to 60) are added by JavaScript, not typed by hand. -->
@@ -37,7 +42,7 @@
     <!-- ===== SCREEN 2: the HOME screen (6 animal groups) ===== -->
     <!-- class="screen hidden" means it starts HIDDEN until we click Enter. -->
     <div id="home-screen" class="screen hidden">
-      <h1>Pick an Animal Group</h1>
+      <h1>🐾 Pick an Animal Group 🐾</h1>
 
       <!-- These 6 SQUARE picture-cards sit in a grid (rows and columns). -->
       <!-- onclick runs openCategory() with the group's id, opening its animals. -->
