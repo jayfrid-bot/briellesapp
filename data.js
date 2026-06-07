@@ -27,7 +27,10 @@ const DATA = {
       id: "cat", category: "felines", name: "Cat", emoji: "🐱",
       photo: "images/animals/cat.jpg",
 
-      // The skeleton picture for this animal.
+      // use3d: true  means this animal opens the spinnable 3D skeleton!
+      use3d: true,
+
+      // The flat skeleton picture (used by the "Flat view" button).
       skeleton: "images/felines/cat/skeleton.svg",
 
       // The clickable BONES. x and y are PERCENTS (0-100) telling the dot where to sit.

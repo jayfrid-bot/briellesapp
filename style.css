@@ -204,6 +204,33 @@ img.cat-pic {
   transform: translate(-50%, -50%) scale(1.25);
 }
 
+/* ===== The 3D skeleton ===== */
+#canvas3d-holder {
+  width: 560px;
+  max-width: 92vw;
+  height: 440px;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+#canvas3d-holder canvas { display: block; }
+
+/* The little "Flat view" / "See it in 3D" buttons. */
+.flat-button {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  color: #1b4332;
+  background: linear-gradient(160deg, #ffd166, #ffb703);
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.flat-button:hover { transform: translateY(-3px); }
+
 /* ===== The bone popup ===== */
 .popup {
   position: fixed;

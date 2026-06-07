@@ -133,19 +133,34 @@ function openCategory(categoryId) {
 }
 
 
-// openAnimal runs when you click an animal. It shows that animal's skeleton.
+// currentAnimal remembers which animal you are looking at right now.
+let currentAnimal = null;
+
+// openAnimal runs when you click an animal. It opens its skeleton.
 function openAnimal(animalId) {
-  // 1) Find the animal in our data.
-  const animal = DATA.animals.find(function (a) {
+  // Find the animal in our data and remember it.
+  currentAnimal = DATA.animals.find(function (a) {
     return a.id === animalId;
   });
 
-  // 2) Set the title and the skeleton picture.
+  // If this animal has a 3D skeleton, open that. Otherwise show the flat one.
+  if (currentAnimal.use3d) {
+    open3DSkeleton(currentAnimal);
+  } else {
+    openFlatSkeleton();
+  }
+}
+
+// openFlatSkeleton shows the flat (2D picture) skeleton for the current animal.
+function openFlatSkeleton() {
+  const animal = currentAnimal;
+
+  // Set the title and the skeleton picture.
   document.getElementById("skeleton-title").textContent =
     animal.emoji + " " + animal.name + " Skeleton";
   document.getElementById("skeleton-img").src = animal.skeleton;
 
-  // 3) Clear old dots, then add a dot for each bone.
+  // Clear old dots, then add a dot for each bone.
   const dotsLayer = document.getElementById("dots-layer");
   dotsLayer.innerHTML = "";
 
@@ -162,7 +177,15 @@ function openAnimal(animalId) {
     });
   }
 
-  // 4) Switch to the skeleton screen.
+  // Show the "See it in 3D" button only if this animal HAS a 3D skeleton.
+  const view3dButton = document.getElementById("view3d-button");
+  if (animal.use3d) {
+    view3dButton.classList.remove("hidden");
+  } else {
+    view3dButton.classList.add("hidden");
+  }
+
+  // Switch to the flat skeleton screen.
   showScreen("skeleton-screen");
 }
 
