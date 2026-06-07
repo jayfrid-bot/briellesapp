@@ -65,6 +65,31 @@
     </div>
 
 
+    <!-- ===== SCREEN 4: the SKELETON screen ===== -->
+    <div id="skeleton-screen" class="screen hidden">
+      <h1 id="skeleton-title">Skeleton</h1>
+      <p class="hint">👆 Tap a red dot to learn a bone!</p>
+
+      <!-- The diagram: the skeleton picture, with clickable dots on top of it. -->
+      <div class="diagram">
+        <img id="skeleton-img" class="layer" src="" alt="animal skeleton">
+        <div id="dots-layer"></div>   <!-- JavaScript adds the dots in here -->
+      </div>
+    </div>
+
+
+    <!-- ===== The bone POPUP (hidden until you tap a dot) ===== -->
+    <div id="popup" class="popup hidden">
+      <div class="popup-box">
+        <button class="popup-close" onclick="closePopup()">✖</button>
+        <h2 id="popup-name">Bone</h2>
+        <p id="popup-say">Say it: ...</p>
+        <button class="speak-button" onclick="speakBone()">🔊 Hear it</button>
+        <p id="popup-desc">...</p>
+      </div>
+    </div>
+
+
     <!-- Load the DATA first (it makes the DATA box), THEN the brain that uses it. -->
     <script src="data.js"></script>
     <script src="app.js"></script>

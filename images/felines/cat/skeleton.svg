@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+  <!-- A simple side-view cat skeleton (bones are cream-colored). -->
+  <!-- You can replace this with a real labeled skeleton picture later! -->
+  <g fill="#f3efe0" stroke="#cfc8ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Skull -->
+    <ellipse cx="60" cy="98" rx="30" ry="23"/>
+    <path d="M30 100 L12 108 L14 116 L34 114 Z"/>            <!-- snout -->
+    <circle cx="52" cy="95" r="6" fill="#14342b" stroke="none"/>  <!-- eye socket -->
+
+    <!-- Mandible (jaw) -->
+    <path d="M20 116 Q45 132 82 122" fill="none" stroke="#f3efe0" stroke-width="6"/>
+
+    <!-- Spine (backbone) -->
+    <path d="M86 92 C150 66 250 66 306 92" fill="none" stroke="#f3efe0" stroke-width="11"/>
+
+    <!-- Ribs -->
+    <g fill="none" stroke="#f3efe0" stroke-width="5">
+      <path d="M112 84 Q108 130 128 158"/>
+      <path d="M132 78 Q128 132 150 162"/>
+      <path d="M152 75 Q150 134 172 163"/>
+      <path d="M172 75 Q172 134 192 160"/>
+      <path d="M192 77 Q196 128 212 152"/>
+    </g>
+
+    <!-- Scapula (shoulder blade) -->
+    <path d="M116 90 L132 92 L126 128 L112 120 Z"/>
+
+    <!-- Front leg -->
+    <path d="M124 124 L114 162" fill="none" stroke="#f3efe0" stroke-width="7"/>
+    <path d="M114 162 L126 200" fill="none" stroke="#f3efe0" stroke-width="6"/>
+    <path d="M126 200 L142 206" fill="none" stroke="#f3efe0" stroke-width="6"/>
+
+    <!-- Pelvis (hip) -->
+    <path d="M292 88 L312 92 L306 120 L288 116 Z"/>
+
+    <!-- Back leg -->
+    <path d="M300 116 L272 156" fill="none" stroke="#f3efe0" stroke-width="8"/>
+    <path d="M272 156 L284 200" fill="none" stroke="#f3efe0" stroke-width="6"/>
+    <path d="M284 200 L300 206" fill="none" stroke="#f3efe0" stroke-width="6"/>
+
+    <!-- Tail -->
+    <path d="M308 90 Q356 80 384 52" fill="none" stroke="#f3efe0" stroke-width="5"/>
+  </g>
+</svg>

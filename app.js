@@ -118,13 +118,85 @@ function openCategory(categoryId) {
       }
 
       button.innerHTML = picture + '<span class="cat-name">' + animal.name + '</span>';
-      // (Next level: clicking this will open the animal's skeleton!)
+
+      // When you click this animal, open its skeleton!
+      button.onclick = function () {
+        openAnimal(animal.id);
+      };
+
       list.appendChild(button);                             // put it on the page
     });
   }
 
   // 5) Finally, switch to the animals screen.
   showScreen("category-screen");
+}
+
+
+// openAnimal runs when you click an animal. It shows that animal's skeleton.
+function openAnimal(animalId) {
+  // 1) Find the animal in our data.
+  const animal = DATA.animals.find(function (a) {
+    return a.id === animalId;
+  });
+
+  // 2) Set the title and the skeleton picture.
+  document.getElementById("skeleton-title").textContent =
+    animal.emoji + " " + animal.name + " Skeleton";
+  document.getElementById("skeleton-img").src = animal.skeleton;
+
+  // 3) Clear old dots, then add a dot for each bone.
+  const dotsLayer = document.getElementById("dots-layer");
+  dotsLayer.innerHTML = "";
+
+  if (animal.parts) {
+    animal.parts.forEach(function (part) {
+      const dot = document.createElement("button");
+      dot.className = "dot";
+      dot.style.left = part.x + "%";    // place it across (left-right)
+      dot.style.top = part.y + "%";     // place it down (up-down)
+      dot.onclick = function () {
+        showBone(part);                 // tap the dot -> show the popup
+      };
+      dotsLayer.appendChild(dot);
+    });
+  }
+
+  // 4) Switch to the skeleton screen.
+  showScreen("skeleton-screen");
+}
+
+
+// currentBone remembers which bone's popup is open (so we can say it out loud).
+let currentBone = null;
+
+// showBone fills the popup with the bone's info and shows it.
+function showBone(part) {
+  currentBone = part;
+  document.getElementById("popup-name").textContent = part.name;
+  document.getElementById("popup-say").textContent = "Say it: " + part.say;
+
+  // Pick the EASY fact for young kids, the HARD fact for older kids.
+  let fact = part.hard;
+  if (currentAge <= 11) {
+    fact = part.easy;
+  }
+  document.getElementById("popup-desc").textContent = fact;
+
+  document.getElementById("popup").classList.remove("hidden");   // show it
+}
+
+// closePopup hides the popup.
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
+}
+
+// speakBone uses the browser's built-in voice to SAY the bone's name out loud!
+function speakBone() {
+  if (currentBone) {
+    const words = new SpeechSynthesisUtterance(currentBone.name);
+    speechSynthesis.speak(words);
+  }
 }
 
 

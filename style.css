@@ -156,6 +156,113 @@ img.cat-pic {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
+/* ===== The skeleton diagram ===== */
+.hint {
+  color: #f1faee;
+  font-size: 17px;
+  margin: 0 0 14px 0;
+  opacity: 0.95;
+}
+
+/* The diagram holds the skeleton picture + the dots on top. */
+.diagram {
+  position: relative;          /* dots are placed relative to THIS box */
+  display: inline-block;
+  width: 460px;
+  max-width: 92vw;
+  background: #14342b;         /* dark panel so the cream bones show clearly */
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.diagram .layer {
+  display: block;
+  width: 100%;                 /* the picture fills the box */
+}
+
+/* The see-through layer the dots live on (covers the whole picture). */
+#dots-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Each clickable bone dot. */
+.dot {
+  position: absolute;
+  transform: translate(-50%, -50%);   /* center the dot on its spot */
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;                 /* a circle */
+  background: #e63946;                /* red */
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+.dot:hover {
+  background: #ffd166;                /* turn yellow when you point at it */
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+/* ===== The bone popup ===== */
+.popup {
+  position: fixed;
+  inset: 0;                           /* cover the whole screen */
+  background: rgba(0, 0, 0, 0.55);    /* dim the background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+.popup.hidden { display: none; }      /* this beats the plain .hidden rule */
+
+.popup-box {
+  position: relative;
+  background: #f1faee;
+  color: #1b4332;
+  padding: 26px 30px;
+  border-radius: 22px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+.popup-box h2 {
+  margin: 4px 0 8px 0;
+  font-size: 30px;
+  color: #2d6a4f;
+}
+#popup-say {
+  font-size: 19px;
+  font-weight: bold;
+  color: #e76f51;
+  margin: 6px 0;
+}
+#popup-desc {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 10px 0 0 0;
+}
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: #1b4332;
+}
+.speak-button {
+  background: #52b788;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.speak-button:hover { background: #40916c; }
+
 /* The Home button — a wood-brown leaf-tag in the top-left corner. */
 .home-button {
   position: fixed;
