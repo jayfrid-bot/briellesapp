@@ -21,6 +21,7 @@ h1 {
   text-align: center;            /* center the words */
   color: #1b4965;                /* a nice dark blue for the text */
   font-size: 48px;               /* BIG title words */
+  margin-bottom: 10px;           /* small gap so Enter sits right under the title */
 }
 
 /* This is OUR OWN name. The dot means "anything with class='enter-button'". */
