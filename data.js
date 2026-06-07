@@ -27,40 +27,40 @@ const DATA = {
       id: "cat", category: "felines", name: "Cat", emoji: "🐱",
       photo: "images/animals/cat.jpg",
 
-      // use3d: true  means this animal opens the spinnable 3D skeleton!
-      use3d: true,
+      // has3d: true  shows a "See it in 3D" button (the fun shape skeleton).
+      has3d: true,
 
-      // The flat skeleton picture (used by the "Flat view" button).
-      skeleton: "images/felines/cat/skeleton.svg",
+      // The REAL, accurate cat skeleton picture (from Wikimedia Commons).
+      skeleton: "images/felines/cat/cat-skeleton-real.svg",
 
       // The clickable BONES. x and y are PERCENTS (0-100) telling the dot where to sit.
       // "say" = how to say it.  "easy" = simple fact (young kids).  "hard" = detailed fact.
       parts: [
-        { name: "Skull",   say: "SKULL",          x: 15, y: 39,
+        { name: "Skull",   say: "SKULL",          x: 14, y: 46,
           easy: "The hard helmet that keeps the brain safe!",
           hard: "Protects the brain and shapes the face. It is made of several bones fused together." },
-        { name: "Mandible", say: "man-DUH-bull",  x: 13, y: 48,
+        { name: "Mandible", say: "man-DUH-bull",  x: 13, y: 54,
           easy: "The jaw bone — it helps the cat chew!",
           hard: "The lower jaw bone. It is the only bone in the skull that moves, used for biting and chewing." },
         { name: "Spine",   say: "SPYNE",          x: 50, y: 28,
           easy: "The bendy backbone made of little bumps!",
           hard: "A chain of small bones called vertebrae. It protects the spinal cord and lets the body bend." },
-        { name: "Ribs",    say: "RIBZ",           x: 38, y: 58,
+        { name: "Ribs",    say: "RIBZ",           x: 43, y: 60,
           easy: "Curvy bones that guard the heart and lungs!",
           hard: "Curved bones that form the rib cage, protecting the heart and lungs." },
-        { name: "Scapula", say: "SKAP-yoo-luh",   x: 30, y: 43,
+        { name: "Scapula", say: "SKAP-yoo-luh",   x: 35, y: 45,
           easy: "The shoulder bone!",
           hard: "The shoulder blade — a flat bone that connects the front leg to the body." },
-        { name: "Pelvis",  say: "PEL-vis",        x: 75, y: 42,
+        { name: "Pelvis",  say: "PEL-vis",        x: 72, y: 41,
           easy: "The hip bones!",
           hard: "The hip bone. It connects the spine to the back legs." },
-        { name: "Femur",   say: "FEE-mur",        x: 71, y: 55,
+        { name: "Femur",   say: "FEE-mur",        x: 76, y: 57,
           easy: "The big thigh bone — the biggest bone in the body!",
           hard: "The thigh bone. It is the longest and strongest bone in the body." },
-        { name: "Tibia",   say: "TIB-ee-uh",      x: 69, y: 72,
+        { name: "Tibia",   say: "TIB-ee-uh",      x: 73, y: 75,
           easy: "The shin bone in the lower leg!",
           hard: "The shin bone — the larger of the two bones in the lower leg." },
-        { name: "Tail",    say: "TAYL",           x: 87, y: 28,
+        { name: "Tail",    say: "TAYL",           x: 86, y: 14,
           easy: "Bones in the tail that help the cat balance!",
           hard: "Caudal vertebrae — small tail bones that help with balance and communication." }
       ]

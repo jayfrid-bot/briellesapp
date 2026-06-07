@@ -168,9 +168,9 @@ img.cat-pic {
 .diagram {
   position: relative;          /* dots are placed relative to THIS box */
   display: inline-block;
-  width: 460px;
+  width: 520px;
   max-width: 92vw;
-  background: #14342b;         /* dark panel so the cream bones show clearly */
+  background: #f8f5ec;         /* light parchment so the dark skeleton lines show */
   border-radius: 18px;
   border: 3px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
@@ -230,6 +230,14 @@ img.cat-pic {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 .flat-button:hover { transform: translateY(-3px); }
+
+/* Tiny faint credit text. */
+.credit {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.75;
+  color: #f1faee;
+}
 
 /* ===== The bone popup ===== */
 .popup {

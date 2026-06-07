@@ -143,12 +143,8 @@ function openAnimal(animalId) {
     return a.id === animalId;
   });
 
-  // If this animal has a 3D skeleton, open that. Otherwise show the flat one.
-  if (currentAnimal.use3d) {
-    open3DSkeleton(currentAnimal);
-  } else {
-    openFlatSkeleton();
-  }
+  // Open the (accurate) flat skeleton with clickable dots.
+  openFlatSkeleton();
 }
 
 // openFlatSkeleton shows the flat (2D picture) skeleton for the current animal.
@@ -179,7 +175,7 @@ function openFlatSkeleton() {
 
   // Show the "See it in 3D" button only if this animal HAS a 3D skeleton.
   const view3dButton = document.getElementById("view3d-button");
-  if (animal.use3d) {
+  if (animal.has3d) {
     view3dButton.classList.remove("hidden");
   } else {
     view3dButton.classList.add("hidden");
