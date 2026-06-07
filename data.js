@@ -23,7 +23,7 @@ const DATA = {
     // ---- 10 FELINES (cats!) ----
     // To give any animal a real photo, add  photo: "images/animals/NAME.jpg"  to its line, like:
     // { id: "cat", category: "felines", name: "Cat", emoji: "🐱", photo: "images/animals/cat.jpg" },
-    { id: "cat",      category: "felines", name: "Cat",      emoji: "🐱" },
+    { id: "cat",      category: "felines", name: "Cat",      emoji: "🐱", photo: "images/animals/cat.jpg" },
     { id: "lion",     category: "felines", name: "Lion",     emoji: "🦁" },
     { id: "tiger",    category: "felines", name: "Tiger",    emoji: "🐯" },
     { id: "leopard",  category: "felines", name: "Leopard",  emoji: "🐆" },
