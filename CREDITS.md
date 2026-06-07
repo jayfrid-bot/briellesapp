@@ -4,10 +4,15 @@ This app uses some free pictures that other kind people made and shared.
 Here's where they came from, so we give credit (this is the polite AND legal thing to do!).
 
 ## Skeleton diagrams
-- **Cat skeleton** — drawing by **Przemek Maksim**, from Wikimedia Commons.
+- **Cat skeleton (flat picture)** — drawing by **Przemek Maksim**, from Wikimedia Commons.
   License: **CC BY-SA 3.0** (free to use and change, as long as you give credit
   and share your version under the same kind of license).
   File: `images/felines/cat/cat-skeleton-real.svg`
+
+## 3D models
+- **Feline Skeleton (3D)** — by **westerly**, from Sketchfab (free download).
+  File: `images/felines/cat/feline-skeleton.glb`
+  (Loads when the app is opened through a web link, like GitHub Pages.)
 
 ## Animal photos (from Pexels — free to use)
 - **Cat** photo — Pexels (free license). File: `images/animals/cat.jpg`

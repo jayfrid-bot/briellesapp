@@ -87,8 +87,10 @@
     <!-- ===== SCREEN 5: the 3D SKELETON screen ===== -->
     <div id="skeleton3d-screen" class="screen hidden">
       <h1 id="skeleton3d-title">3D Skeleton</h1>
-      <p class="hint">🖱️ Drag to spin • scroll to zoom • tap a bone for its name!</p>
-      <div id="canvas3d-holder"></div>     <!-- the 3D picture goes here -->
+      <p id="hint3d" class="hint">🖱️ Drag to spin • scroll to zoom • tap a bone for its name!</p>
+      <div id="canvas3d-holder">
+        <div id="loading3d" class="hidden">Loading 3D… 🦴</div>   <!-- shows while the model loads -->
+      </div>
       <button class="flat-button" onclick="openFlatSkeleton()">📄 Flat view</button>
     </div>
 
@@ -110,6 +112,7 @@
     <!-- The 3D helper (three.js) + the part that spins/zooms it. -->
     <script src="libs/three.min.js"></script>
     <script src="libs/OrbitControls.js"></script>
+    <script src="libs/GLTFLoader.js"></script>
     <script src="skeleton3d.js"></script>
     <script src="app.js"></script>
 

@@ -27,8 +27,10 @@ const DATA = {
       id: "cat", category: "felines", name: "Cat", emoji: "🐱",
       photo: "images/animals/cat.jpg",
 
-      // has3d: true  shows a "See it in 3D" button (the fun shape skeleton).
+      // has3d: true  shows a "See it in 3D" button.
       has3d: true,
+      // model3d = a REAL downloaded 3D skeleton file (.glb) that spins!
+      model3d: "images/felines/cat/feline-skeleton.glb",
 
       // The REAL, accurate cat skeleton picture (from Wikimedia Commons).
       skeleton: "images/felines/cat/cat-skeleton-real.svg",
