@@ -31,19 +31,28 @@
       <h1>Pick an Animal Group</h1>
 
       <!-- These 6 SQUARE picture-cards sit in a grid (rows and columns). -->
-      <!-- Each card has a big animal on top and its name underneath. -->
+      <!-- onclick runs openCategory() with the group's id, opening its animals. -->
       <div class="button-grid">
-        <button class="category-button"><span class="cat-pic">🐱</span><span class="cat-name">Felines</span></button>
-        <button class="category-button"><span class="cat-pic">🐶</span><span class="cat-name">Canines</span></button>
-        <button class="category-button"><span class="cat-pic">🐸</span><span class="cat-name">Amphibians</span></button>
-        <button class="category-button"><span class="cat-pic">🦎</span><span class="cat-name">Reptiles</span></button>
-        <button class="category-button"><span class="cat-pic">🐦</span><span class="cat-name">Birds</span></button>
-        <button class="category-button"><span class="cat-pic">🐹</span><span class="cat-name">Small Pets</span></button>
+        <button class="category-button" onclick="openCategory('felines')"><span class="cat-pic">🐱</span><span class="cat-name">Felines</span></button>
+        <button class="category-button" onclick="openCategory('canines')"><span class="cat-pic">🐶</span><span class="cat-name">Canines</span></button>
+        <button class="category-button" onclick="openCategory('amphibians')"><span class="cat-pic">🐸</span><span class="cat-name">Amphibians</span></button>
+        <button class="category-button" onclick="openCategory('reptiles')"><span class="cat-pic">🦎</span><span class="cat-name">Reptiles</span></button>
+        <button class="category-button" onclick="openCategory('birds')"><span class="cat-pic">🐦</span><span class="cat-name">Birds</span></button>
+        <button class="category-button" onclick="openCategory('smallpets')"><span class="cat-pic">🐹</span><span class="cat-name">Small Pets</span></button>
       </div>
     </div>
 
 
-    <!-- Load our JavaScript LAST (the BRAIN that makes buttons work). -->
+    <!-- ===== SCREEN 3: the ANIMALS screen (the 10 animals in a group) ===== -->
+    <!-- JavaScript fills these in for us, so they start EMPTY. -->
+    <div id="category-screen" class="screen hidden">
+      <h1 id="category-title">Animals</h1>
+      <div id="animal-list" class="button-grid"></div>
+    </div>
+
+
+    <!-- Load the DATA first (it makes the DATA box), THEN the brain that uses it. -->
+    <script src="data.js"></script>
     <script src="app.js"></script>
 
   </body>

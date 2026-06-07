@@ -25,3 +25,46 @@ function showScreen(screenId) {
     homeButton.classList.remove("hidden");  // everywhere else, show Home
   }
 }
+
+
+// openCategory runs when you click an animal-group card (like "Felines").
+// It builds a button for every animal in that group, then shows the screen.
+function openCategory(categoryId) {
+
+  // 1) Find this group's info so we can show its name as the title.
+  //    .find() looks through the list and grabs the FIRST match.
+  const category = DATA.categories.find(function (c) {
+    return c.id === categoryId;
+  });
+  document.getElementById("category-title").textContent =
+    category.emoji + " " + category.name;
+
+  // 2) Find ALL the animals that belong to this group.
+  //    .filter() keeps only the items that pass the test.
+  const animalsHere = DATA.animals.filter(function (animal) {
+    return animal.category === categoryId;
+  });
+
+  // 3) Empty out the old buttons before adding new ones.
+  const list = document.getElementById("animal-list");
+  list.innerHTML = "";
+
+  // 4) If this group has no animals yet, show a friendly message.
+  if (animalsHere.length === 0) {
+    list.innerHTML = "<p>No animals here yet — add some in data.js! 🐾</p>";
+  } else {
+    // Otherwise, make one card-button for EACH animal.
+    animalsHere.forEach(function (animal) {
+      const button = document.createElement("button");      // make a new button
+      button.className = "category-button";                 // give it the card look
+      button.innerHTML =
+        '<span class="cat-pic">' + animal.emoji + '</span>' +
+        '<span class="cat-name">' + animal.name + '</span>';
+      // (Next level: clicking this will open the animal's skeleton!)
+      list.appendChild(button);                             // put it on the page
+    });
+  }
+
+  // 5) Finally, switch to the animals screen.
+  showScreen("category-screen");
+}
