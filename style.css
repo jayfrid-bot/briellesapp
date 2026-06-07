@@ -26,9 +26,9 @@ h1 {
 
 /* This is OUR OWN name. The dot means "anything with class='enter-button'". */
 .enter-button {
-  width: 90px;                   /* how wide the square is (smaller now) */
-  height: 90px;                  /* how tall the square is (same = a square!) */
-  border-radius: 18px;           /* ROUNDED CORNERS (bigger number = rounder) */
+  width: 160px;                  /* wider than tall = a RECTANGLE */
+  height: 55px;                  /* shorter height makes it a rectangle */
+  border-radius: 14px;           /* ROUNDED CORNERS (bigger number = rounder) */
 
   font-size: 18px;               /* size of the word "Enter" */
   color: white;                  /* white text */
