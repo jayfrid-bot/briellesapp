@@ -52,6 +52,7 @@ const DATA = {
         // ============================================================
         {
           name: "Head", say: "HED", x: 14, y: 46,
+          pos3d: { x: 2.7, y: 0.4, z: 0 },   // where its red dot sits on the 3D model
           easy: "The skull and jaw — it protects the brain!",
           hard: "The head holds the skull, jaw, teeth, and the sockets for the eyes and nose.",
           // No "image" yet, so tapping Head shows a BUTTON MENU of its bones.
@@ -108,6 +109,7 @@ const DATA = {
         // ============================================================
         {
           name: "Spine", say: "SPYNE", x: 50, y: 28,
+          pos3d: { x: -0.3, y: 0.9, z: 0 },
           easy: "The bendy backbone made of little bumps!",
           hard: "A chain of vertebrae that protects the spinal cord and lets the body bend.",
           parts: [
@@ -119,6 +121,7 @@ const DATA = {
 
         {
           name: "Ribcage", say: "RIB-cayj", x: 43, y: 60,
+          pos3d: { x: 0.8, y: -0.1, z: 0 },
           easy: "Curvy bones that guard the heart and lungs!",
           hard: "The rib cage shields the heart and lungs.",
           parts: [
@@ -130,6 +133,7 @@ const DATA = {
 
         {
           name: "Front Leg", say: "FRUNT leg", x: 35, y: 45,
+          pos3d: { x: 1.6, y: -0.7, z: 0.3 },
           easy: "The arm and shoulder of the cat.",
           hard: "Includes the shoulder blade and the long leg bones up front.",
           parts: [
@@ -141,6 +145,7 @@ const DATA = {
 
         {
           name: "Back Leg", say: "BAK leg", x: 76, y: 57,
+          pos3d: { x: -1.7, y: -0.7, z: 0.3 },
           easy: "The powerful jumping legs.",
           hard: "The hind limb — the cat's jumping engine.",
           parts: [
@@ -155,6 +160,7 @@ const DATA = {
 
         {
           name: "Pelvis", say: "PEL-vis", x: 72, y: 41,
+          pos3d: { x: -1.8, y: 0.5, z: 0 },
           easy: "The hip bones!",
           hard: "The hip bone; it links the spine to the back legs.",
           parts: [
@@ -166,6 +172,7 @@ const DATA = {
 
         {
           name: "Tail", say: "TAYL", x: 86, y: 14,
+          pos3d: { x: -2.8, y: 0.2, z: 0 },
           easy: "Bones in the tail that help the cat balance!",
           hard: "Caudal vertebrae that help with balance and communication.",
           parts: [

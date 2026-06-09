@@ -62,6 +62,11 @@ function renderAnatomy() {
   renderBreadcrumb();      // the trail at the top (Cat › Head › Teeth)
   renderDiagram(node);     // the picture + dots (flat screen only)
   renderMenu(node);        // the buttons for each child (both screens)
+
+  // Also update the red dots on the 3D model (if the 3D is open).
+  if (typeof render3dDots === "function") {
+    render3dDots(node);
+  }
 }
 
 // The picture with clickable dots — only the FLAT screen has this.

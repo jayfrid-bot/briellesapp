@@ -161,16 +161,80 @@ function updateHint(clickable) {
   }
 }
 
-// Figure out which bone you clicked (only works on the shape-skeleton).
+// Figure out which red dot (or shape-bone) you clicked.
 function onBoneClick(e) {
-  if (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6) return;
-  if (boneMeshes.length === 0) return;     // a real model has no clickable bones
+  if (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6) return;  // was a spin
+  if (boneMeshes.length === 0) return;
   const rect = renderer3d.domElement.getBoundingClientRect();
   pointerNDC.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
   pointerNDC.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
   raycaster3d.setFromCamera(pointerNDC, camera3d);
   const hits = raycaster3d.intersectObjects(boneMeshes, false);
-  if (hits.length > 0) { showBone(hits[0].object.userData.bone); }
+  if (hits.length === 0) return;
+
+  const data = hits[0].object.userData;
+  if (data.pos) { focusOnPoint(data.pos); }    // ZOOM IN toward the dot
+  if (data.bone) {
+    if (typeof pickChild === "function") {
+      pickChild(data.bone);                    // drill in (or popup) like the menu
+    } else {
+      showBone(data.bone);
+    }
+  }
+}
+
+// ===== Red clickable DOTS on the 3D model =====
+let dotMarkers = [];   // the red dot spheres currently shown
+
+// Remove all the red dots.
+function clear3dDots() {
+  dotMarkers.forEach(function (m) { scene3d.remove(m); });
+  dotMarkers = [];
+  // also take them out of the clickable list
+  boneMeshes = boneMeshes.filter(function (b) { return b.userData.isDot !== true; });
+}
+
+// Draw a red dot for each child of "node" that has a pos3d position.
+// Called from anatomy.js whenever the explorer re-renders.
+function render3dDots(node) {
+  if (!inited3d || !scene3d) return;      // 3D not open yet → nothing to do
+  clear3dDots();
+
+  // Back at the very top? Reset to the nice wide spinning view.
+  if (node && node.isRoot) { resetCamera3d(); }
+
+  (node.parts || []).forEach(function (child) {
+    if (!child.pos3d) return;             // no 3D position → no dot (just the menu)
+    const dot = new THREE.Mesh(
+      new THREE.SphereGeometry(0.14, 16, 16),
+      new THREE.MeshBasicMaterial({ color: 0xe63946 })   // bright red, always visible
+    );
+    dot.position.set(child.pos3d.x, child.pos3d.y, child.pos3d.z);
+    dot.userData = { bone: child, pos: dot.position.clone(), isDot: true };
+    scene3d.add(dot);
+    dotMarkers.push(dot);
+    boneMeshes.push(dot);                 // make it clickable
+  });
+}
+
+// Zoom the camera in toward a point (used when you tap a red dot).
+function focusOnPoint(point) {
+  if (!controls3d) return;
+  controls3d.autoRotate = false;          // stop spinning so you can study it
+  controls3d.target.copy(point);
+  // move the camera close to the point, keeping its current direction
+  const dir = new THREE.Vector3().subVectors(camera3d.position, point).normalize();
+  camera3d.position.copy(point).add(dir.multiplyScalar(3.5));
+  controls3d.update();
+}
+
+// Go back to the wide, slowly-spinning view.
+function resetCamera3d() {
+  if (!controls3d) return;
+  controls3d.target.set(0, 0, 0);
+  camera3d.position.set(0, 1.5, 8);
+  controls3d.autoRotate = true;
+  controls3d.update();
 }
 
 function resize3d() {
