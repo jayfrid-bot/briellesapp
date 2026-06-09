@@ -310,21 +310,29 @@ img.cat-pic {
 }
 .speak-button:hover { background: #40916c; }
 
-/* The Home button — a wood-brown leaf-tag in the top-left corner. */
-.home-button {
+/* The top-left bar that holds the Home and Back buttons. */
+.topbar {
   position: fixed;
   top: 16px;
   left: 16px;
   z-index: 5;                  /* stay on top of everything */
+  display: flex;
+  gap: 10px;                   /* space between the two buttons */
+}
+
+/* Shared look for the Home and Back buttons. */
+.navbtn {
   font-size: 16px;
   font-weight: bold;
   padding: 10px 16px;
   border-radius: 20px;
   border: none;
   color: #ffffff;
-  background: linear-gradient(160deg, #b08968, #7f5539);   /* wood brown */
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.15s;
 }
-.home-button:hover { transform: translateY(-3px); }
+.navbtn:hover { transform: translateY(-3px); }
+
+.home-button { background: linear-gradient(160deg, #b08968, #7f5539); }  /* wood brown */
+.back-button { background: linear-gradient(160deg, #74c69d, #40916c); }  /* leaf green */

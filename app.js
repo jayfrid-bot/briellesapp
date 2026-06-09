@@ -52,28 +52,62 @@ function setAge() {
   }
 }
 
-// This is a FUNCTION. A function is a set of steps with a name,
-// so you can run all the steps just by saying its name.
-// This one is called showScreen. You give it the name of a screen to show.
-function showScreen(screenId) {
+// currentScreenId remembers which screen we are on right now.
+// screenHistory is a TRAIL of the screens we visited (like breadcrumbs 🍞),
+// so the Back button knows where to return to.
+let currentScreenId = "start-screen";
+let screenHistory = [];
 
-  // STEP 1: Find ALL the screens and HIDE every single one.
-  // (querySelectorAll grabs everything with class "screen".)
+// setScreen just SWITCHES to a screen (hide all, show one). No history changes.
+function setScreen(screenId) {
   const allScreens = document.querySelectorAll(".screen");
   allScreens.forEach(function (oneScreen) {
-    oneScreen.classList.add("hidden");      // add "hidden" = make it disappear
+    oneScreen.classList.add("hidden");
   });
-
-  // STEP 2: Now SHOW just the one screen we asked for.
-  // (getElementById finds the screen by its id, then we remove "hidden".)
   document.getElementById(screenId).classList.remove("hidden");
+  currentScreenId = screenId;
+  updateNavButtons();
+}
 
-  // STEP 3: Show the Home button on every screen EXCEPT the start screen.
+// showScreen goes FORWARD to a new screen and drops a breadcrumb so Back works.
+function showScreen(screenId) {
+  if (currentScreenId !== screenId) {
+    screenHistory.push(currentScreenId);   // remember where we came from
+  }
+  setScreen(screenId);
+}
+
+// goBack walks back ONE step along the breadcrumb trail.
+function goBack() {
+  if (screenHistory.length > 0) {
+    const previousScreen = screenHistory.pop();
+    setScreen(previousScreen);
+  }
+}
+
+// goHome jumps all the way back to the start and clears the trail.
+function goHome() {
+  screenHistory = [];
+  setScreen("start-screen");
+}
+
+// Show or hide the Home and Back buttons depending on where we are.
+function updateNavButtons() {
   const homeButton = document.getElementById("home-button");
-  if (screenId === "start-screen") {
-    homeButton.classList.add("hidden");     // on the start page, hide Home
+  const backButton = document.getElementById("back-button");
+
+  // Home shows on every screen except the very first one.
+  if (currentScreenId === "start-screen") {
+    homeButton.classList.add("hidden");
   } else {
-    homeButton.classList.remove("hidden");  // everywhere else, show Home
+    homeButton.classList.remove("hidden");
+  }
+
+  // Back shows only when there is somewhere to go back to.
+  if (currentScreenId !== "start-screen" && screenHistory.length > 0) {
+    backButton.classList.remove("hidden");
+  } else {
+    backButton.classList.add("hidden");
   }
 }
 

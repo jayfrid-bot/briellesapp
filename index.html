@@ -17,8 +17,11 @@
       <span>🌿</span><span>🍃</span><span>🌴</span><span>🌿</span>
     </div>
 
-    <!-- The Home button floats in the corner. It hides on the very first screen. -->
-    <button id="home-button" class="home-button hidden" onclick="showScreen('start-screen')">🏠 Home</button>
+    <!-- The Home + Back buttons float in the top-left corner. -->
+    <div class="topbar">
+      <button id="home-button" class="navbtn home-button hidden" onclick="goHome()">🏠 Home</button>
+      <button id="back-button" class="navbtn back-button hidden" onclick="goBack()">⬅ Back</button>
+    </div>
 
 
     <!-- ===== SCREEN 1: the START screen ===== -->
