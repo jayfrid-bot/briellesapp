@@ -57,6 +57,9 @@
         <button class="category-button" onclick="openCategory('birds')"><span class="cat-pic">🐦</span><span class="cat-name">Birds</span></button>
         <button class="category-button" onclick="openCategory('smallpets')"><span class="cat-pic">🐹</span><span class="cat-name">Small Pets</span></button>
       </div>
+
+      <!-- The "Play a Game!" button lives below the animal cards. -->
+      <button class="play-game-btn" onclick="openBodyGame()">🎮 Play a Game!</button>
     </div>
 
 
@@ -127,6 +130,39 @@
     </div>
 
 
+    <!-- ===== SCREEN 6: ESCAPE THE BODY game ===== -->
+    <div id="game-screen" class="screen hidden">
+      <h1>🫀 Escape the Body!</h1>
+      <p class="hint">You are a white blood cell — dodge the organs and reach the EXIT!</p>
+
+      <!-- Difficulty buttons -->
+      <div class="diff-bar">
+        <button class="diff-btn active" data-diff="easy"   onclick="setGameDifficulty('easy')">🌱 Easy</button>
+        <button class="diff-btn"        data-diff="medium" onclick="setGameDifficulty('medium')">⚡ Medium</button>
+        <button class="diff-btn"        data-diff="hard"   onclick="setGameDifficulty('hard')">🔥 Hard</button>
+      </div>
+
+      <!-- Live timer -->
+      <div id="game-timer" class="game-timer">⏱ 0.0s</div>
+
+      <!-- The canvas lives inside game-wrap so the win overlay can sit on top of it. -->
+      <div id="game-wrap" class="game-wrap">
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Win overlay — hidden until you reach the EXIT -->
+        <div id="game-message" class="game-msg hidden">
+          <div class="game-msg-box">
+            <h2 id="msg-title">You escaped! 🎉</h2>
+            <p  id="msg-text"></p>
+            <button class="flat-button" onclick="startRound()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="hint" style="margin-top:12px">🎮 Arrow keys / WASD — or tap &amp; drag on the canvas to move!</p>
+    </div>
+
+
     <!-- Load the DATA first (it makes the DATA box), THEN the brain that uses it. -->
     <script src="data.js"></script>
     <!-- The body EXPLORER (drill-down menus + breadcrumb). -->
@@ -137,6 +173,8 @@
     <script src="libs/GLTFLoader.js"></script>
     <script src="skeleton3d.js"></script>
     <script src="app.js"></script>
+    <!-- The body escape GAME. -->
+    <script src="game.js"></script>
 
   </body>
 </html>
