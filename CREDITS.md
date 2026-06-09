@@ -14,9 +14,12 @@ Here's where they came from, so we give credit (this is the polite AND legal thi
   File: `images/felines/cat/feline-skeleton.glb`
   (Loads when the app is opened through a web link, like GitHub Pages.)
 
-## Animal photos (from Pexels — free to use)
+## Animal photos
 - **Cat** photo — Pexels (free license). File: `images/animals/cat.jpg`
 - **Lion** photo by Johannes Rampp — Pexels (free license). File: `images/animals/lion.jpg`
+- **Tiger, Leopard, Cheetah, Jaguar, Cougar, Lynx, Bobcat, Panther** — photos from the
+  Wikipedia articles on Wikimedia Commons (free licenses; see each file's page for the
+  photographer + exact license). Files: `images/animals/<name>.jpg`
 
 ## Code helper
 - **three.js** (3D library) and **OrbitControls** — free, open-source (MIT license).

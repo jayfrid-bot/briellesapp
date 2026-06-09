@@ -177,14 +177,14 @@ const DATA = {
       ]
     },
     { id: "lion",     category: "felines", name: "Lion",     emoji: "🦁", photo: "images/animals/lion.jpg" },
-    { id: "tiger",    category: "felines", name: "Tiger",    emoji: "🐯" },
-    { id: "leopard",  category: "felines", name: "Leopard",  emoji: "🐆" },
-    { id: "cheetah",  category: "felines", name: "Cheetah",  emoji: "🐆" },
-    { id: "jaguar",   category: "felines", name: "Jaguar",   emoji: "🐆" },
-    { id: "cougar",   category: "felines", name: "Cougar",   emoji: "🐈" },
-    { id: "lynx",     category: "felines", name: "Lynx",     emoji: "🐈" },
-    { id: "bobcat",   category: "felines", name: "Bobcat",   emoji: "🐈" },
-    { id: "panther",  category: "felines", name: "Panther",  emoji: "🐈‍⬛" }
+    { id: "tiger",    category: "felines", name: "Tiger",    emoji: "🐯", photo: "images/animals/tiger.jpg" },
+    { id: "leopard",  category: "felines", name: "Leopard",  emoji: "🐆", photo: "images/animals/leopard.jpg" },
+    { id: "cheetah",  category: "felines", name: "Cheetah",  emoji: "🐆", photo: "images/animals/cheetah.jpg" },
+    { id: "jaguar",   category: "felines", name: "Jaguar",   emoji: "🐆", photo: "images/animals/jaguar.jpg" },
+    { id: "cougar",   category: "felines", name: "Cougar",   emoji: "🐈", photo: "images/animals/cougar.jpg" },
+    { id: "lynx",     category: "felines", name: "Lynx",     emoji: "🐈", photo: "images/animals/lynx.jpg" },
+    { id: "bobcat",   category: "felines", name: "Bobcat",   emoji: "🐈", photo: "images/animals/bobcat.jpg" },
+    { id: "panther",  category: "felines", name: "Panther",  emoji: "🐈‍⬛", photo: "images/animals/panther.jpg" }
 
     // ---- The other groups are empty for now. ----
     // ---- When you're ready, add animals here the same way, like: ----
