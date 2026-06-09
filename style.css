@@ -251,6 +251,70 @@ img.cat-pic {
   color: #f1faee;
 }
 
+/* ===== The body explorer (breadcrumb + drill-down menu) ===== */
+
+/* The two explorer screens start at the TOP and can scroll, so a tall
+   picture + menu is never cut off (the others stay centered). */
+#skeleton-screen, #skeleton3d-screen {
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+/* The breadcrumb trail (Cat › Head › Teeth). */
+.crumb-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.crumb {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 6px 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.crumb:hover { background: rgba(255, 255, 255, 0.32); }
+.crumb-sep { color: #ffffff; opacity: 0.8; }
+
+/* The tap-in menu of sub-parts (reuses the card look, but wider rows). */
+.anatomy-menu {
+  margin-top: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.anatomy-button {
+  width: auto;
+  min-width: 160px;
+  height: auto;
+  padding: 18px 16px;
+  flex-direction: row;
+  gap: 8px;
+}
+.drill-arrow { font-size: 26px; opacity: 0.85; }
+
+/* The two new popup lines. */
+.popup-parent {
+  color: #2a9d8f;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+}
+.popup-fun {
+  margin-top: 12px;
+  font-style: italic;
+  color: #1b4332;
+  background: #ffe8a3;
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+.popup-parent.hidden, .popup-fun.hidden { display: none; }
+.diagram.hidden { display: none; }   /* beats the plain .diagram display rule */
+
 /* ===== The bone popup ===== */
 .popup {
   position: fixed;

@@ -71,13 +71,20 @@
     <!-- ===== SCREEN 4: the SKELETON screen ===== -->
     <div id="skeleton-screen" class="screen hidden">
       <h1 id="skeleton-title">Skeleton</h1>
-      <p class="hint">👆 Tap a red dot to learn a bone!</p>
+      <p class="hint">👆 Tap a part to explore inside it!</p>
 
-      <!-- The diagram: the skeleton picture, with clickable dots on top of it. -->
-      <div class="diagram">
+      <!-- The breadcrumb trail (Cat › Head › Teeth) — built by anatomy.js. -->
+      <div id="anatomy-crumb-flat" class="crumb-bar"></div>
+
+      <!-- The diagram: the picture, with clickable dots on top of it. -->
+      <!-- It has id="diagram" so anatomy.js can hide it on levels with no picture. -->
+      <div id="diagram" class="diagram">
         <img id="skeleton-img" class="layer" src="" alt="animal skeleton">
         <div id="dots-layer"></div>   <!-- JavaScript adds the dots in here -->
       </div>
+
+      <!-- The tap-in MENU of sub-parts — built by anatomy.js. -->
+      <div id="anatomy-menu-flat" class="button-grid anatomy-menu"></div>
 
       <!-- This button (shown only when the animal has 3D) opens the 3D view. -->
       <button id="view3d-button" class="flat-button hidden" onclick="open3DSkeleton(currentAnimal)">🔄 See it in 3D</button>
@@ -90,10 +97,18 @@
     <!-- ===== SCREEN 5: the 3D SKELETON screen ===== -->
     <div id="skeleton3d-screen" class="screen hidden">
       <h1 id="skeleton3d-title">3D Skeleton</h1>
-      <p id="hint3d" class="hint">🖱️ Drag to spin • scroll to zoom • tap a bone for its name!</p>
+      <p id="hint3d" class="hint">🖱️ Drag to spin • tap a part below to explore inside it!</p>
+
+      <!-- The SAME breadcrumb, 3D copy. -->
+      <div id="anatomy-crumb-3d" class="crumb-bar"></div>
+
       <div id="canvas3d-holder">
         <div id="loading3d" class="hidden">Loading 3D… 🦴</div>   <!-- shows while the model loads -->
       </div>
+
+      <!-- The SAME sub-part menu, 3D copy (no dots — the model is one solid piece). -->
+      <div id="anatomy-menu-3d" class="button-grid anatomy-menu"></div>
+
       <button class="flat-button" onclick="openFlatSkeleton()">📄 Flat view</button>
     </div>
 
@@ -103,15 +118,19 @@
       <div class="popup-box">
         <button class="popup-close" onclick="closePopup()">✖</button>
         <h2 id="popup-name">Bone</h2>
+        <p id="popup-parent" class="popup-parent hidden"></p>   <!-- "Part of: Head" -->
         <p id="popup-say">Say it: ...</p>
         <button class="speak-button" onclick="speakBone()">🔊 Hear it</button>
         <p id="popup-desc">...</p>
+        <p id="popup-fun" class="popup-fun hidden"></p>          <!-- 🌟 fun fact -->
       </div>
     </div>
 
 
     <!-- Load the DATA first (it makes the DATA box), THEN the brain that uses it. -->
     <script src="data.js"></script>
+    <!-- The body EXPLORER (drill-down menus + breadcrumb). -->
+    <script src="anatomy.js"></script>
     <!-- The 3D helper (three.js) + the part that spins/zooms it. -->
     <script src="libs/three.min.js"></script>
     <script src="libs/OrbitControls.js"></script>

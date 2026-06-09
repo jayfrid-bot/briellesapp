@@ -196,4 +196,23 @@ function open3DSkeleton(animal) {
   if (!inited3d) { init3d(); }
   showContentFor(animal);
   resize3d();
+  renderAnatomy();   // draw the SAME explorer menu/breadcrumb here (keeps your place)
+}
+
+// (Bonus) Swing the camera toward a saved angle for a region.
+// focus = { theta, phi, zoom }. Does nothing if focus is missing.
+function focusCamera3d(focus) {
+  if (!focus || !controls3d) return;
+  controls3d.autoRotate = false;           // stop spinning so you can study it
+  const r = focus.zoom || 7;
+  const t = focus.theta || 0;
+  const p = focus.phi || (Math.PI / 2);
+  // turn the angles into an x,y,z spot around the model's center
+  camera3d.position.set(
+    r * Math.sin(p) * Math.sin(t),
+    r * Math.cos(p),
+    r * Math.sin(p) * Math.cos(t)
+  );
+  controls3d.target.set(0, 0, 0);
+  controls3d.update();
 }

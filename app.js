@@ -66,6 +66,7 @@ function setScreen(screenId) {
   });
   document.getElementById(screenId).classList.remove("hidden");
   currentScreenId = screenId;
+  window.scrollTo(0, 0);     // always start a new screen at the top
   updateNavButtons();
 }
 
@@ -77,8 +78,21 @@ function showScreen(screenId) {
   setScreen(screenId);
 }
 
-// goBack walks back ONE step along the breadcrumb trail.
+// goBack walks back ONE step. If we are exploring inside the body, it climbs
+// up one body-level first; only at the top does it leave the screen.
 function goBack() {
+  const onSkeletonScreen =
+    currentScreenId === "skeleton-screen" ||
+    currentScreenId === "skeleton3d-screen";
+
+  // Inside the explorer with a level to climb? Go up one body-level.
+  if (onSkeletonScreen && anatomyPath.length > 1) {
+    anatomyUp();
+    updateNavButtons();
+    return;
+  }
+
+  // Otherwise, walk back one screen like before.
   if (screenHistory.length > 0) {
     const previousScreen = screenHistory.pop();
     setScreen(previousScreen);
@@ -103,8 +117,13 @@ function updateNavButtons() {
     homeButton.classList.remove("hidden");
   }
 
-  // Back shows only when there is somewhere to go back to.
-  if (currentScreenId !== "start-screen" && screenHistory.length > 0) {
+  // Back shows when you can go back a screen OR climb up a body-level.
+  const onSkeletonScreen =
+    currentScreenId === "skeleton-screen" ||
+    currentScreenId === "skeleton3d-screen";
+  const canClimbLevel = onSkeletonScreen && anatomyPath.length > 1;
+
+  if (currentScreenId !== "start-screen" && (screenHistory.length > 0 || canClimbLevel)) {
     backButton.classList.remove("hidden");
   } else {
     backButton.classList.add("hidden");
@@ -177,35 +196,21 @@ function openAnimal(animalId) {
     return a.id === animalId;
   });
 
-  // Open the (accurate) flat skeleton with clickable dots.
+  // Start the body explorer fresh at the TOP for this animal.
+  openAnatomy(currentAnimal);
+
+  // Show the flat skeleton screen.
   openFlatSkeleton();
 }
 
-// openFlatSkeleton shows the flat (2D picture) skeleton for the current animal.
+// openFlatSkeleton shows the flat (2D picture) skeleton screen.
+// The explorer (anatomy.js) draws the picture, dots, breadcrumb, and menu.
+// NOTE: it does NOT reset the explorer, so coming back from 3D keeps your place.
 function openFlatSkeleton() {
   const animal = currentAnimal;
 
-  // Set the title and the skeleton picture.
   document.getElementById("skeleton-title").textContent =
     animal.emoji + " " + animal.name + " Skeleton";
-  document.getElementById("skeleton-img").src = animal.skeleton;
-
-  // Clear old dots, then add a dot for each bone.
-  const dotsLayer = document.getElementById("dots-layer");
-  dotsLayer.innerHTML = "";
-
-  if (animal.parts) {
-    animal.parts.forEach(function (part) {
-      const dot = document.createElement("button");
-      dot.className = "dot";
-      dot.style.left = part.x + "%";    // place it across (left-right)
-      dot.style.top = part.y + "%";     // place it down (up-down)
-      dot.onclick = function () {
-        showBone(part);                 // tap the dot -> show the popup
-      };
-      dotsLayer.appendChild(dot);
-    });
-  }
 
   // Show the "See it in 3D" button only if this animal HAS a 3D skeleton.
   const view3dButton = document.getElementById("view3d-button");
@@ -215,8 +220,8 @@ function openFlatSkeleton() {
     view3dButton.classList.add("hidden");
   }
 
-  // Switch to the flat skeleton screen.
   showScreen("skeleton-screen");
+  renderAnatomy();    // draw the current level (picture + dots + menu + breadcrumb)
 }
 
 
@@ -224,17 +229,36 @@ function openFlatSkeleton() {
 let currentBone = null;
 
 // showBone fills the popup with the bone's info and shows it.
-function showBone(part) {
+// "parent" is optional — if given, the popup shows "Part of: <parent>".
+function showBone(part, parent) {
   currentBone = part;
   document.getElementById("popup-name").textContent = part.name;
-  document.getElementById("popup-say").textContent = "Say it: " + part.say;
+  document.getElementById("popup-say").textContent = "Say it: " + (part.say || part.name);
+
+  // "Part of: Head" — only when we know the parent and it isn't the whole animal.
+  const parentEl = document.getElementById("popup-parent");
+  if (parent && !parent.isRoot) {
+    parentEl.textContent = "Part of: " + parent.name;
+    parentEl.classList.remove("hidden");
+  } else {
+    parentEl.classList.add("hidden");
+  }
 
   // Pick the EASY fact for young kids, the HARD fact for older kids.
   let fact = part.hard;
   if (currentAge <= 11) {
     fact = part.easy;
   }
-  document.getElementById("popup-desc").textContent = fact;
+  document.getElementById("popup-desc").textContent = fact || "";
+
+  // A fun fact — only if this part has one.
+  const funEl = document.getElementById("popup-fun");
+  if (part.fun) {
+    funEl.textContent = "🌟 " + part.fun;
+    funEl.classList.remove("hidden");
+  } else {
+    funEl.classList.add("hidden");
+  }
 
   document.getElementById("popup").classList.remove("hidden");   // show it
 }
